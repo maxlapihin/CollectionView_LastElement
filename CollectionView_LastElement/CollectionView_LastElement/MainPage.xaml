@@ -1,16 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="CollectionView_LastElement.MainPage">
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 mc:Ignorable="d"
+			 xmlns:local="clr-namespace:CollectionView_LastElement"
+			 x:Class="CollectionView_LastElement.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
-
+	<StackLayout>
+		<Label Text="Welcome to Xamarin.Forms!"
+			   HorizontalOptions="Center"
+			   VerticalOptions="CenterAndExpand" />
+		<Grid BackgroundColor="#f4f4f4"
+			  Padding="14">
+			<CollectionView x:Name="MenuItemsCollectionView"
+							SelectionMode="Single"
+							FlowDirection="LeftToRight"
+							ItemSizingStrategy="MeasureAllItems">
+				<CollectionView.ItemsSource>
+					<x:Array Type="{x:Type x:String}">
+						<x:String>Baboon</x:String>
+						<x:String>Capuchin Monkey</x:String>
+						<x:String>Blue Monkey</x:String>
+						<x:String>Squirrel Monkey</x:String>
+						<x:String>Golden Lion Tamarin</x:String>
+						<x:String>Howler Monkey</x:String>
+						<x:String>Japanese Macaque</x:String>
+						<x:String>Bug is here</x:String>
+					</x:Array>
+				</CollectionView.ItemsSource>
+				<CollectionView.ItemsLayout>
+					<GridItemsLayout Orientation="Vertical"
+									 Span="2"
+									 VerticalItemSpacing="8"
+									 HorizontalItemSpacing="8" />
+				</CollectionView.ItemsLayout>
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<ContentView VerticalOptions="StartAndExpand"
+									 MinimumHeightRequest="100"
+									 MinimumWidthRequest="100"
+									 HeightRequest="100"
+									 HorizontalOptions="StartAndExpand">
+							<Frame BackgroundColor="White"
+								   CornerRadius="5"
+								   HasShadow="False"
+								   BorderColor="White"
+								   Padding="0">
+								<StackLayout Orientation="Vertical"
+											 HorizontalOptions="Start"
+											 VerticalOptions="Start"
+											 Padding="18,12,18,12"
+											 Spacing="6">
+									<Image Aspect="AspectFit"
+										   VerticalOptions="CenterAndExpand"
+										   Source="{local:ImageResource CollectionView_LastElement.icon.png}"
+										   HorizontalOptions="Start"
+										   HeightRequest="35"
+										   WidthRequest="35" />
+									<Label Text="{Binding .}"
+										   FontSize="Small"
+										   TextColor="DarkGray"
+										   VerticalOptions="StartAndExpand"
+										   HorizontalOptions="StartAndExpand"
+										   HorizontalTextAlignment="Start"
+										   LineBreakMode="WordWrap" />
+								</StackLayout>
+							</Frame>
+						</ContentView>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+		</Grid>
+	</StackLayout>
 </ContentPage>

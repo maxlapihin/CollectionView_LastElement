@@ -16,6 +16,8 @@ namespace CollectionView_LastElement
 		public MainPage()
 		{
 			InitializeComponent();
+
+			//image1.ImageSource = ImageSource.FromResource("CollectionView_LastElement.icon.png");
 		}
 	}
 }
